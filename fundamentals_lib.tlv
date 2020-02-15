@@ -45,6 +45,28 @@ m4_define(['m4_hier_concat_big_endian'],
 m4_define(['m4_hier_concat_little_endian'],
           ['{m4_forloop(['m4_ind'], 0, $2, ['m4_ifelse(m4_ind, 0, [''], [', '])$1[m4_eval($2 - m4_ind - 1)]$2'])}'])
 
+
+// ##################################
+// Single-line verif macros
+// (multi-line versions later)
+
+// ==========
+// Assertions
+// ==========
+
+// A shorthand for a concurrent assertion statement (which, of course can infer staging logic).
+m4_define(['m4_assert'], ['assert property (@(posedge clk) reset || ($1));'])
+
+
+// ========
+// Printing
+// ========
+// One-line versions of the corresponding multiline macros:
+m4_define(['m4_display'], ['always_ff @(posedge clk) \$display($1);'])
+m4_define(['m4_display_if'], ['always_ff @(posedge clk) if ($1) \$display($2);'])
+
+
+
 // Reduction macro.
 // Performs an operation across all instances of a hierarchy and provides the result outside that hierarchy.
 // m4+redux($sum[7:0], /hier, max, min, $addend, '0, +)
@@ -119,23 +141,6 @@ m4_define(['m4_hier_concat_little_endian'],
 // ================================================================================
 // (Similar to verif.vh, but as M4 macros.)
 
-// ##################################
-// Single-line macros
-
-// ==========
-// Assertions
-// ==========
-
-// A shorthand for a concurrent assertion statement (which, of course can infer staging logic).
-m4_define(['m4_assert'], ['assert property (@(posedge clk) reset || ($1));'])
-
-
-// ========
-// Printing
-// ========
-// One-line versions of the corresponding multiline macros:
-m4_define(['m4_display'], ['always_ff @(posedge clk) \$display($1);'])
-m4_define(['m4_display_if'], ['always_ff @(posedge clk) if ($1) \$display($2);'])
 
 // ##################################
 // Multi-line macros
