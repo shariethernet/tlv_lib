@@ -30,9 +30,12 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-`ifndef VERIF_VH
-// Verilog macros for verification, logging, and instrumentation.
-// (Similar to verif.tlv, but as SV macros.)
+`ifndef FUNDAMENTALS_LIB_VH
+// Verilog macros similar to M4 macros in fundamentls_lib.tlv, but as SV macros.
+
+
+
+// For verification, logging, and instrumentation.
 
 `define DISPLAY(args) always_ff @(posedge clk) $display args;
 `define DISPLAY_IF(cond, args) always_ff @(posedge clk) if (cond) $display args;
@@ -40,4 +43,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `define ASSERT(prop) assert property (@(posedge clk) reset || (prop));
 
 
-`endif  // VERIF_VH
+`endif  // FUNDAMENTALS_LIB_VH
