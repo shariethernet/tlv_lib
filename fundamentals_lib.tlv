@@ -276,7 +276,7 @@ m4+definitions(['
 // A macro for printing every clk cycle.
 // Params:
 //   args: The arguments for the \$display call (the print string and variables).
-\TLV display_if(args)
+\TLV display(args)
    \SV_plus
       always_ff @(posedge clk) \$display(args);
 
