@@ -67,10 +67,11 @@ m4+definitions(['
   m4_define(['m4_display'], ['always_ff @(posedge clk) \$display($1);'])
   m4_define(['m4_display_if'], ['always_ff @(posedge clk) if ($1) \$display($2);'])
 
+  // For \TLV tree_redux:
+  m4_define(['m4_tree_redux_uniquifier'], 0)
 '])
 
 
-//------------new-------------
 
 // This can be used to instantiate an m4_ macro (with any number of argumenets) that produces no new lines
 // using a multi-line instantiation.
@@ -148,6 +149,7 @@ m4+definitions(['
             $m4_sig = /m4_base_hier_name['0'][0]$m4_sig;  // Pull $_sig out of level0 hierarchy scope.
       )
    m4_def(tree_redux_uniquifier, m4_eval(m4_tree_redux_uniquifier + 1))
+
 // For use by tree_redux only, using macros defined by \TLV tree_redux.
 // Params:
 //   #_level: 0.., logic level of the reduduction.
@@ -187,7 +189,6 @@ m4+definitions(['
                      $m4_sig = m4_with(cnt, 0, ['m4_op_expr']);
                   )
       )
-//----------------------------
 
 // Reduction macro.
 // Performs an operation across all instances of a hierarchy and provides the result outside that hierarchy.
