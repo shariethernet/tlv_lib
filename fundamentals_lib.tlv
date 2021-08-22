@@ -82,9 +82,7 @@ m4+definitions(['
    m4+m4_tmp
    m4_pop_set()m4_pop(tmp)
 \TLV with_seq(_etc)
-   m4_errprint(['with_seq: $@']m4_new_line)
    m4_push(tmp, m4_push_TLV_set(_seq, $@))
-   m4_errprint(['with_seq tmp: ']m4_tmp['']m4_new_line)
    m4+m4_tmp
    m4_pop_set()m4_pop(tmp)
 \TLV ifelse(_a, _b, _match_block, _mismatch_block, _etc)
@@ -155,7 +153,6 @@ m4+definitions(['
 //   #_level: 0.., logic level of the reduduction.
 //   #_spread: 1, m4_branching_factor(0), , the number of outputs to reduce at this level.
 \TLV tree_redux_inner(#_level, #_spread)
-   m4_errprint(['tree_redux_inner$@'])
    m4+with_seq(
       level,        ['#_level'],
       next_level,   ['m4_eval(#_level + 1)'],
