@@ -86,8 +86,7 @@ m4+definitions(['
    m4+m4_tmp
    m4_pop_set()m4_pop(tmp)
 \TLV ifelse(_a, _b, _match_block, _mismatch_block, _etc)
-   m4_ifelse(['_a'], ['_b'], ['m4+_match_block'], ['m4_ifexpr($# == 4, ['m4+_mismatch_block'])'])
-   m4_ifelse(['_a'], ['_b'], [''], ['m4_ifexpr($# > 4, ['m4_push(_ifelse_args, ['m4_shift(m4_shift(m4_shift($@)))'])m4+ifelse(m4__ifelse_args)m4_pop(_ifelse_args)'])'])
+   m4_ifelse(['_a'], ['_b'], ['m4+_match_block'], m4_eval($# == 4), 1, ['m4+_mismatch_block'], m4_eval($# > 4), 1, ['m4_push(_ifelse_args, ['m4_shift(m4_shift(m4_shift($@)))'])m4+ifelse(m4__ifelse_args)m4_pop(_ifelse_args)'], [''])
 
 
 // forloop(_var, #from, #to, _block)
