@@ -61,7 +61,7 @@ m4+definitions(['
   m4_define(['m4_assert_r'], ['assert property (@(posedge *clk) disable iff ($1) ($2)) else \$error($3);']) 
   m4_define(['m4_assert_cr'], ['assert property (@(posedge ($1)) disable iff ($2) ($3)) else \$error($4);']) 
 
-  m4_define(['m4_cover'],['cover property (@(posedge *clk) *reset || ($1)) else \$error($2);'])
+  m4_define(['m4_cover'],['cover property (@(posedge *clk) *reset || ($1));'])
   
   // ========
   // Printing
